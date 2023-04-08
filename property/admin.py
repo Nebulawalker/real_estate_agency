@@ -11,7 +11,9 @@ class FlatAdminSettings(admin.ModelAdmin):
         'price',
         'new_building',
         'construction_year',
-        'town'
+        'town',
+        'owners_phonenumber',
+        'owner_pure_phone'
     ]
     list_filter = [
         'new_building',
