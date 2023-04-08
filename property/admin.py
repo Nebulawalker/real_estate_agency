@@ -19,6 +19,7 @@ class FlatAdminSettings(admin.ModelAdmin):
         'has_balcony'
     ]
     list_editable = ['new_building']
+    raw_id_fields = ['liked_by']
 
 
 class ClaimSettings(admin.ModelAdmin):
