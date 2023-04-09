@@ -49,9 +49,9 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
-    
+
     liked_by = models.ManyToManyField(
-        User, 
+        User,
         related_name="liked_flats",
         verbose_name='Кто лайкнул',
         blank=True
@@ -59,7 +59,8 @@ class Flat(models.Model):
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
-    
+
+
 class Claim(models.Model):
     author = models.ForeignKey(
         User,
@@ -69,19 +70,19 @@ class Claim(models.Model):
     flat = models.ForeignKey(
         Flat,
         on_delete=models.CASCADE,
-        verbose_name='Картира'
+        verbose_name='Квартира'
     )
     claim = models.TextField(verbose_name='Текст жалобы')
 
     def __str__(self):
         return f'{self.author}, {self.flat}'
-    
+
 
 class Owner(models.Model):
-    owner = models.CharField('ФИО владельца', max_length=200)
-    owners_phonenumber = models.CharField('Номер владельца', max_length=20)
-    owner_pure_phone = PhoneNumberField(
-        'Стандартизированный номер телефона', 
+    fullname = models.CharField('ФИО владельца', max_length=200)
+    raw_phonenumber = models.CharField('Номер владельца', max_length=20)
+    pure_phonenumber = PhoneNumberField(
+        'Стандартизированный номер телефона',
         blank=True
     )
     flats = models.ManyToManyField(
@@ -92,4 +93,6 @@ class Owner(models.Model):
     )
 
     def __str__(self):
-        return f'Собственник {self.owner}, телефон {self.owner_pure_phone}, квартир в собственности {self.flats.count()}'
+        return f'Собственник {self.fullname}, \
+            телефон {self.pure_phonenumber}, \
+            квартир в собственности {self.flats.count()}'
