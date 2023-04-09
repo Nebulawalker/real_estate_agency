@@ -2,6 +2,10 @@ from django.contrib import admin
 
 from .models import Flat, Claim, Owner
 
+class OwnersInline(admin.TabularInline):
+    model = Owner.flats.through
+    raw_id_fields = ['owner']
+    list_display = ['address', 'price', 'new_building', 'construction_year']
 
 class FlatAdminSettings(admin.ModelAdmin):
     search_fields = ['town', 'address']
@@ -20,6 +24,7 @@ class FlatAdminSettings(admin.ModelAdmin):
     ]
     list_editable = ['new_building']
     raw_id_fields = ['liked_by']
+    inlines = [OwnersInline]
 
 
 class ClaimSettings(admin.ModelAdmin):
