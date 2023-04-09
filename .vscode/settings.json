@@ -1,8 +1,0 @@
-{
-    "cSpell.words": [
-        "phonenumber",
-        "phonenumbers"
-    ],
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": false
-}
