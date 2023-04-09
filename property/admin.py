@@ -4,16 +4,14 @@ from .models import Flat, Claim, Owner
 
 
 class FlatAdminSettings(admin.ModelAdmin):
-    search_fields = ['town', 'address', 'owner']
+    search_fields = ['town', 'address']
     readonly_fields = ['created_at']
     list_display = [
         'address',
         'price',
         'new_building',
         'construction_year',
-        'town',
-        'owners_phonenumber',
-        'owner_pure_phone'
+        'town'        
     ]
     list_filter = [
         'new_building',
