@@ -64,6 +64,7 @@ class Flat(models.Model):
 class Claim(models.Model):
     author = models.ForeignKey(
         User,
+        related_name='claims',
         on_delete=models.CASCADE,
         verbose_name='Автор жалобы'
     )
@@ -75,7 +76,7 @@ class Claim(models.Model):
     text = models.TextField(verbose_name='Текст жалобы')
 
     def __str__(self):
-        return f'{self.author}, {self.flat}'
+        return f'Жалоба пользователя {self.author}, на объявление {self.flat}'
 
 
 class Owner(models.Model):
