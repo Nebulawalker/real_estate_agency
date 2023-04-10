@@ -72,7 +72,7 @@ class Claim(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Квартира'
     )
-    claim = models.TextField(verbose_name='Текст жалобы')
+    text = models.TextField(verbose_name='Текст жалобы')
 
     def __str__(self):
         return f'{self.author}, {self.flat}'
