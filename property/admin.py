@@ -13,7 +13,7 @@ class OwnersInline(admin.TabularInline):
         'construction_year'
     ]
 
-
+@admin.register(Flat)
 class FlatAdminSettings(admin.ModelAdmin):
     search_fields = ['town', 'address']
     readonly_fields = ['created_at']
@@ -34,14 +34,11 @@ class FlatAdminSettings(admin.ModelAdmin):
     inlines = [OwnersInline]
 
 
+@admin.register(Claim)
 class ClaimSettings(admin.ModelAdmin):
     raw_id_fields = ['flat']
 
 
+@admin.register(Owner)
 class OwnerSettings(admin.ModelAdmin):
     raw_id_fields = ['flats']
-
-
-admin.site.register(Flat, FlatAdminSettings)
-admin.site.register(Claim, ClaimSettings)
-admin.site.register(Owner, OwnerSettings)
