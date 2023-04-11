@@ -70,6 +70,7 @@ class Claim(models.Model):
     )
     flat = models.ForeignKey(
         Flat,
+        related_name='claims',
         on_delete=models.CASCADE,
         verbose_name='Квартира'
     )
